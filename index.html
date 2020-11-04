@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&family=Raleway&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/cavemancssalfa.css">
+    <style>
+        /*     font-family: 'Poppins', sans-serif;
+
+    font-family: 'Raleway', sans-serif; */
+        body {
+            background-color: #F6F300;
+            min-width: 200px;
+        }
+
+        /* Remove margins and padding from the list */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the list items */
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            max-width: 980px;
+            letter-spacing: -2px;
+            background: transparent;
+            transition: 0.2s;
+            font-size: 2rem;
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        ul li:nth-child(odd) {
+            background: transparent;
+        }
+
+        /* Darker background-color on hover */
+        ul li:hover {
+            background: #bdba00;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        ul li.checked {
+            background: transparent;
+            color: #121212;
+            text-decoration: line-through;
+            text-decoration-thickness: 5px;
+        }
+
+
+
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+        .close:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Style the header */
+        .header {
+            padding: 1.5rem;
+            color: #121212;
+
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .header .header-title {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+        }
+
+        /* Style the input */
+        input {
+            margin: 0;
+            background: none;
+            border: 5px solid #121212;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            color: #121212;
+            padding: 10px;
+
+
+
+        }
+
+        input::placeholder {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            color: #333;
+
+        }
+
+        input:focus {
+            border: none;
+            outline: none;
+            transition: 300ms ease-in-out;
+            border: 5px solid #121212;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 10px 30px;
+            border: 5px solid #121212;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            background: #121212;
+            color: #F6F300;
+            float: left;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .addBtn:hover {
+            background-color: transparent;
+            color: #121212;
+            transition: 300ms ease-in-out;
+        }
+
+        .addBtn:focus {
+            outline: none;
+            background-color: transparent;
+            color: #121212;
+            transition: 300ms ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="myDIV" class="header">
+        <h1 class="header-title">Let's <br> Do it</h1><br><br>
+
+        <div class="input-text">
+            <input type="text" id="myInput" placeholder="What's next work">
+        </div><br>
+        <div class="btn">
+            <button class="addBtn" onclick="newElement()" type="submit">Add</button>
+        </div>
+        <!-- <span onclick="newElement()" class="addBtn">Add</span> -->
+
+
+
+
+
+    </div>
+
+    <ul id="myUL">
+        <li>Task 1 </li>
+        <li>Task 2 </li>
+        <li>Task 3</li>
+        <li class="checked">Completed Task</li>
+        <li>Read a books</li>
+        <li>Rate my design</li>
+    </ul>
+
+    <script>
+        // Create a "close" button and append it to each list item
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+        }
+
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function (ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+
+        // Create a new list item when clicking on the "Add" button
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
