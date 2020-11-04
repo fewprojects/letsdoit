@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="theme-color" content="#db5945">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&family=Raleway&display=swap"
         rel="stylesheet">
@@ -251,7 +252,9 @@
         var colors = ['#F6F300', '#71F99C', '#FF7D01', '#16a596', '#a05344', '#bc6ff1'];
 
         var changeBackground = function () {
-            document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+            var colorChange = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = colorChange;
+            document.head.themeColor = colorChange;
         };
 
         changeBackground();
