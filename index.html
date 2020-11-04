@@ -29,11 +29,10 @@
             list-style-type: none;
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            max-width: 980px;
-            letter-spacing: -2px;
+            max-width: 100%;
             background: transparent;
             transition: 0.2s;
-            font-size: 2rem;
+            font-size: 1.5rem;
             /* make the list items unselectable */
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -160,7 +159,7 @@
             <input type="text" id="myInput" placeholder="What's next work">
         </div><br>
         <div class="btn">
-            <button class="addBtn" onclick="newElement()" type="submit">Add</button>
+            <button id="myBtn" class="addBtn" onclick="newElement()" type="submit">Add</button>
         </div>
         <!-- <span onclick="newElement()" class="addBtn">Add</span> -->
 
@@ -169,7 +168,7 @@
 
 
     </div>
-
+    <br> <br> <br>
     <ul id="myUL">
         <li>Task 1 </li>
         <li>Task 2 </li>
@@ -178,7 +177,15 @@
         <li>Read a books</li>
         <li>Rate my design</li>
     </ul>
-
+    <script>
+        var input = document.getElementById("myInput");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("myBtn").click();
+            }
+        });
+    </script>
     <script>
         // Create a "close" button and append it to each list item
         var myNodelist = document.getElementsByTagName("LI");
@@ -235,6 +242,15 @@
                 }
             }
         }
+    </script>
+    <script>
+        var input = document.getElementById("myInput");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("addBtn").click();
+            }
+        });
     </script>
 
 </body>
