@@ -254,8 +254,8 @@
         var changeBackground = function () {
             var colorChange = colors[Math.floor(Math.random() * colors.length)];
             document.body.style.background = colorChange;
-            var metaThemeColor = document.querySelector("meta[name=theme-color]").metaThemeColor = colorChange;
-
+            // var metaThemeColor = document.querySelector("meta[name=theme-color]").metaThemeColor = colorChange;
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', colorChange);
         };
 
         changeBackground();
