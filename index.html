@@ -11,7 +11,6 @@
 
     font-family: 'Raleway', sans-serif; */
         body {
-            background-color: #F6F300;
             min-width: 200px;
         }
 
@@ -47,7 +46,7 @@
 
         /* Darker background-color on hover */
         ul li:hover {
-            background: #bdba00;
+            background-color: rgb(255, 255, 255,0.7);
         }
 
         /* When clicked on, add a background color and strike out text */
@@ -126,8 +125,8 @@
             border: 5px solid #121212;
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            background: #121212;
-            color: #F6F300;
+            background: transparent;
+            color: #121212;
             float: left;
             text-align: center;
             cursor: pointer;
@@ -136,15 +135,11 @@
         }
 
         .addBtn:hover {
-            background-color: transparent;
-            color: #121212;
             transition: 300ms ease-in-out;
         }
 
         .addBtn:focus {
-            outline: none;
-            background-color: transparent;
-            color: #121212;
+
             transition: 300ms ease-in-out;
         }
     </style>
@@ -252,7 +247,15 @@
             }
         });
     </script>
+    <script>
+        var colors = ['#F6F300', '#71F99C', '#FF7D01', '#16a596', '#a05344', '#bc6ff1'];
 
+        var changeBackground = function () {
+            document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+        };
+
+        changeBackground();
+    </script>
 </body>
 
 </html>
